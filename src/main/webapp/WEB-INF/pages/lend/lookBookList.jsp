@@ -16,7 +16,7 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-    <legend>借书时间线</legend>
+    <legend>📚 借阅历史时间线</legend> <!-- 添加emoji图标 -->
 </fieldset>
 <ul class="layui-timeline">
 <c:forEach var="lend" items="${info}" varStatus="status">

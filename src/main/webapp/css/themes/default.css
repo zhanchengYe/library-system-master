@@ -66,23 +66,24 @@
 
 /*左侧菜单背景 leftMenuBg */
 .layui-side.layui-bg-black, .layui-side.layui-bg-black > .layuimini-menu-left > ul, .layuimini-menu-left-zoom > ul {
-    background-color: #28333E !important;
+    background-color: #4f5559 !important; /* 修改这里改变菜单背景色 */
 }
 
 /*左侧菜单选中背景 leftMenuBgThis */
-.layuimini-menu-left .layui-nav-tree .layui-this, .layuimini-menu-left .layui-nav-tree .layui-this > a, .layuimini-menu-left .layui-nav-tree .layui-nav-child dd.layui-this, .layuimini-menu-left .layui-nav-tree .layui-nav-child dd.layui-this a, .layuimini-menu-left-zoom.layui-nav-tree .layui-this, .layuimini-menu-left-zoom.layui-nav-tree .layui-this > a, .layuimini-menu-left-zoom.layui-nav-tree .layui-nav-child dd.layui-this, .layuimini-menu-left-zoom.layui-nav-tree .layui-nav-child dd.layui-this a {
-    background-color: #1E9FFF !important
+.layuimini-menu-left .layui-nav-tree .layui-this, .layuimini-menu-left .layui-nav-tree .layui-this > a {
+    background-color: #595959 !important; /* 修改这里改变选中项背景色 */
+}
+
+/*左侧菜单字体颜色 leftMenuColor */
+.layuimini-menu-left .layui-nav .layui-nav-item a {
+    color: rgb(191, 187, 187) !important; /* 修改这里改变字体颜色 */
 }
 
 /*左侧菜单子菜单背景 leftMenuChildBg */
 .layuimini-menu-left .layui-nav-itemed > .layui-nav-child {
-    background-color: #0c0f13 !important;
+    background-color: #5f5f60 !important;
 }
 
-/*左侧菜单字体颜色 leftMenuColor */
-.layuimini-menu-left .layui-nav .layui-nav-item a, .layuimini-menu-left-zoom.layui-nav .layui-nav-item a {
-    color: rgb(191, 187, 187) !important;
-}
 
 /*左侧菜单选中字体颜色 leftMenuColorThis */
 .layuimini-menu-left .layui-nav .layui-nav-item a:hover, .layuimini-menu-left .layui-nav .layui-this a, .layuimini-menu-left-zoom.layui-nav .layui-nav-item a:hover, .layuimini-menu-left-zoom.layui-nav .layui-this a {
@@ -92,4 +93,105 @@
 /**tab选项卡选中颜色 tabActiveColor */
 .layuimini-tab .layui-tab-title .layui-this .layuimini-tab-active {
     background-color: #1e9fff;
+}
+/* 现代渐变风格主题 */
+
+/*左侧菜单背景 - 渐变效果 */
+.layui-side.layui-bg-black, .layui-side.layui-bg-black > .layuimini-menu-left > ul, .layuimini-menu-left-zoom > ul {
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+/*左侧菜单项增强样式 */
+.layuimini-menu-left .layui-nav .layui-nav-item a {
+    border-radius: 8px !important;
+    margin: 2px 8px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/*左侧菜单项悬停效果 */
+.layuimini-menu-left .layui-nav .layui-nav-item a:hover {
+    background: rgba(255,255,255,0.1) !important;
+    transform: translateX(4px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/*左侧菜单选中背景 - 渐变效果 */
+.layuimini-menu-left .layui-nav-tree .layui-this,
+.layuimini-menu-left .layui-nav-tree .layui-this > a {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+    border-radius: 8px !important;
+    transform: translateX(4px) !important;
+}
+
+/*左侧菜单选中项动画效果 */
+.layuimini-menu-left .layui-nav-tree .layui-this > a::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 4px !important;
+    height: 100% !important;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.8) 100%) !important;
+    border-radius: 0 2px 2px 0 !important;
+}
+
+/*左侧菜单子菜单背景 */
+.layuimini-menu-left .layui-nav-itemed > .layui-nav-child {
+    background: rgba(0,0,0,0.2) !important;
+    border-radius: 0 0 8px 8px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/*左侧菜单字体颜色 */
+.layuimini-menu-left .layui-nav .layui-nav-item a {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/*左侧菜单选中字体颜色 */
+.layuimini-menu-left .layui-nav .layui-nav-item a:hover,
+.layuimini-menu-left .layui-nav .layui-this a {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/*菜单图标增强 */
+.layuimini-menu-left .layui-nav-item a .fa,
+.layuimini-menu-left .layui-nav-item a .layui-icon {
+    margin-right: 12px !important;
+    font-size: 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+/*选中菜单图标动画 */
+.layuimini-menu-left .layui-nav-tree .layui-this a .fa,
+.layuimini-menu-left .layui-nav-tree .layui-this a .layui-icon {
+    transform: scale(1.1) !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) !important;
+}
+
+/*子菜单项样式 */
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child a {
+    padding-left: 45px !important;
+    border-radius: 6px !important;
+    margin: 1px 12px !important;
+    position: relative !important;
+}
+
+/*子菜单项悬停效果 */
+.layui-layout-body .layuimini-menu-left .layui-nav .layui-nav-child a:hover {
+    background: rgba(255,255,255,0.08) !important;
+    transform: translateX(2px) !important;
+}
+
+/*子菜单选中效果 */
+.layuimini-menu-left .layui-nav-tree .layui-nav-child dd.layui-this a {
+    background: rgba(102, 126, 234, 0.3) !important;
+    border-left: 3px solid #667eea !important;
+    padding-left: 42px !important;
 }

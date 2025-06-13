@@ -25,7 +25,7 @@
         <label class="layui-form-label required">类型名称</label>
         <div class="layui-input-block">
             <input type="text" name="name" lay-verify="required" value="${info.name}" class="layui-input">
-            <tip>填写自己类型名称</tip>
+            <tip>填写类型名称</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
@@ -37,7 +37,7 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认修改</button>
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">修改</button>
         </div>
     </div>
 </div>

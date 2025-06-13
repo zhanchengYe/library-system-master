@@ -1,18 +1,26 @@
 body {
     margin: 15px 15px 15px 15px;
-    background: #f2f2f2;
+    background: url('../images/img.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .layuimini-container {
-    border: 1px solid #f2f2f2;
+    border: 1px solid #4f5559;
     border-radius: 5px;
-    background-color: #ffffff
+    background-color: #ffffff;
 }
 
 .layuimini-main {
     margin: 10px 10px 10px 10px;
+    background-color: #ffffff
+}
+.layui-card-body {
+    background-color: #f8f8f8 !important;
 }
 
+.layui-table-view {
+    background-color: #fafafa !important;
+}
 /**必填红点 */
 .layuimini-form > .layui-form-item > .required:after {
     content: '*';

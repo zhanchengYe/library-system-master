@@ -31,10 +31,16 @@
         .main_btn > p {height:40px;}
         .layui-bg-number {background-color:#F8F8F8;}
         .layuimini-notice:hover {background:#f6f6f6;}
-        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice {  padding: 15px 20px; /* 增加内边距 */
+            margin-bottom: 10px; /* 添加间距 */
+            border-radius: 8px; /* 圆角效果 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 阴影效果 */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* 渐变背景 */ }
         .layuimini-notice-title,.layuimini-notice-label {
             padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
-        .layuimini-notice-title {line-height:28px;font-size:14px;}
+        .layuimini-notice-title {font-size: 16px; /* 增大标题字体 */
+            font-weight: bold;
+            color: #2c3e50; /* 深色标题 */  }
         .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
     </style>
 </head>
@@ -44,12 +50,12 @@
             <div class="layui-col-md4">
 
                 <div class="layui-card">
-                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>公告</div>
                         <div class="layui-card-body layui-text">
                             <c:forEach var="notice" items="${noticeList}">
                                 <div class="layuimini-notice">
                                     <div class="layuimini-notice-title">${notice.topic}</div>
-                                    <div class="layuimini-notice-extra"><fmt:formatDate value="${notice.createDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+                                    <!--   <div class="layuimini-notice-extra"><fmt:formatDate value="${notice.createDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>-->
                                     <div class="layuimini-notice-content layui-hide">
                                         ${notice.content}
                                     </div>
@@ -77,13 +83,13 @@
             var title = $(this).children('.layuimini-notice-title').text(),
                 noticeTime = $(this).children('.layuimini-notice-extra').text(),
                 content = $(this).children('.layuimini-notice-content').html();
-            var html = '<div style="padding:15px 20px; text-align:justify; line-height: 22px;border-bottom:1px solid #e2e2e2;background-color: #2f4056;color: #ffffff">\n' +
-                '<div style="text-align: center;margin-bottom: 20px;font-weight: bold;border-bottom:1px solid #718fb5;padding-bottom: 5px"><h4 class="text-danger">' + title + '</h4></div>\n' +
-                '<div style="font-size: 12px">' + content + '</div>\n' +
+            var html = '<div style="padding:20px; text-align:justify; line-height: 24px; background: #ffffff; border-radius: 8px;">\n' +
+                '<div style="text-align: center; margin-bottom: 20px; font-weight: bold; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px"><h3>' + title + '</h3></div>\n' +
+                '<div style="font-size: 14px; color: #34495e;">' + content + '</div>\n' +
                 '</div>\n';
             parent.layer.open({
                 type: 1,
-                title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
+                title: '公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
                 area: '300px;',
                 shade: 0.8,
                 id: 'layuimini-notice',

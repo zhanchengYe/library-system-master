@@ -18,7 +18,7 @@ layui.define(["jquery", "layer"], function (exports) {
         config: function (bgcolorId) {
             var bgColorConfig = [
                 {
-                    headerRightBg: '#ffffff', //头部右侧背景色
+                    headerRightBg: '#7c7979', //头部右侧背景色
                     headerRightBgThis: '#e4e4e4', //头部右侧选中背景色,
                     headerRightColor: 'rgba(107, 107, 107, 0.7)', //头部右侧字体颜色,
                     headerRightChildColor: 'rgba(107, 107, 107, 0.7)', //头部右侧下拉字体颜色,
@@ -30,11 +30,11 @@ layui.define(["jquery", "layer"], function (exports) {
                     headerLogoBg: '#192027', //logo背景颜色,
                     headerLogoColor: 'rgb(191, 187, 187)', //logo字体颜色,
                     leftMenuNavMore: 'rgb(191, 187, 187)', //左侧菜单更多下拉样式,
-                    leftMenuBg: '#28333E', //左侧菜单背景,
-                    leftMenuBgThis: '#1E9FFF', //左侧菜单选中背景,
-                    leftMenuChildBg: '#0c0f13', //左侧菜单子菜单背景,
+                    leftMenuBg: '#dcdedf', //左侧菜单背景,
+                    leftMenuBgThis: '#007bff', //左侧菜单选中背景,
+                    leftMenuChildBg: '#f8f9fa', //左侧菜单子菜单背景,
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
-                    leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
+                    leftMenuColorThis: '#000000', //左侧菜单选中字体颜色,
                     tabActiveColor: '#1e9fff', //tab选项卡选中颜色,
                 },
                 {
@@ -78,24 +78,24 @@ layui.define(["jquery", "layer"], function (exports) {
                     tabActiveColor: '#ffa4d1', //tab选项卡选中颜色,
                 },
                 {
-                    headerRightBg: '#1aa094', //头部右侧背景色
-                    headerRightBgThis: '#197971', //头部右侧选中背景色,
+                    headerRightBg: '#c6caca', //头部右侧背景色
+                    headerRightBgThis: '#b3b8b8', //头部右侧选中背景色,
                     headerRightColor: 'rgba(255,255,255,.7)', //头部右侧字体颜色,
                     headerRightChildColor: '#676767', //头部右侧下拉字体颜色,
                     headerRightColorThis: '#ffffff', //头部右侧鼠标选中,
                     headerRightNavMore: 'rgba(255,255,255,.7)', //头部右侧更多下拉颜色,
-                    headerRightNavMoreBg: '#1aa094', //头部右侧更多下拉列表选中背景色,
+                    headerRightNavMoreBg: '#b8c1c0', //头部右侧更多下拉列表选中背景色,
                     headerRightNavMoreColor: '#ffffff', //头部右侧更多下拉列表字体色,
                     headerRightToolColor: '#bbe3df', //头部缩放按钮样式,
                     headerLogoBg: '#0c0c0c', //logo背景颜色,
                     headerLogoColor: '#ffffff', //logo字体颜色,
                     leftMenuNavMore: 'rgb(191, 187, 187)', //左侧菜单更多下拉样式,
                     leftMenuBg: '#23262e', //左侧菜单背景,
-                    leftMenuBgThis: '#1aa094', //左侧菜单选中背景,
+                    leftMenuBgThis: '#a5acab', //左侧菜单选中背景,
                     leftMenuChildBg: 'rgba(0,0,0,.3)', //左侧菜单子菜单背景,
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
                     leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
-                    tabActiveColor: '#1aa094', //tab选项卡选中颜色,
+                    tabActiveColor: '#b2b8b8', //tab选项卡选中颜色,
                 },
                 {
                     headerRightBg: '#1e9fff', //头部右侧背景色
@@ -150,9 +150,9 @@ layui.define(["jquery", "layer"], function (exports) {
                     headerLogoBg: '#0c0c0c', //logo背景颜色,
                     headerLogoColor: '#ffffff', //logo字体颜色,
                     leftMenuNavMore: 'rgb(191, 187, 187)', //左侧菜单更多下拉样式,
-                    leftMenuBg: '#1f1f1f', //左侧菜单背景,
-                    leftMenuBgThis: '#3b3f4b', //左侧菜单选中背景,
-                    leftMenuChildBg: 'rgba(0,0,0,.3)', //左侧菜单子菜单背景,
+                    leftMenuBg: '#979797', //左侧菜单背景,
+                    leftMenuBgThis: '#ffffff', //左侧菜单选中背景,
+                    leftMenuChildBg: 'rgba(255,255,255,0.3)', //左侧菜单子菜单背景,
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
                     leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
                     tabActiveColor: '#e82121', //tab选项卡选中颜色,
@@ -172,7 +172,7 @@ layui.define(["jquery", "layer"], function (exports) {
                     leftMenuNavMore: 'rgb(191, 187, 187)', //左侧菜单更多下拉样式,
                     leftMenuBg: '#2f4056', //左侧菜单背景,
                     leftMenuBgThis: '#586473', //左侧菜单选中背景,
-                    leftMenuChildBg: 'rgba(0,0,0,.3)', //左侧菜单子菜单背景,
+                    leftMenuChildBg: 'rgba(255,255,255,0.3)', //左侧菜单子菜单背景,
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
                     leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
                     tabActiveColor: '#963885', //tab选项卡选中颜色,
@@ -231,7 +231,7 @@ layui.define(["jquery", "layer"], function (exports) {
                     headerLogoColor: '#ffffff', //logo字体颜色,
                     leftMenuNavMore: 'rgb(191, 187, 187)', //左侧菜单更多下拉样式,
                     leftMenuBg: '#1f1f1f', //左侧菜单背景,
-                    leftMenuBgThis: '#3b3f4b', //左侧菜单选中背景,
+                    leftMenuBgThis: '#ffffff', //左侧菜单选中背景,
                     leftMenuChildBg: 'rgba(0,0,0,.3)', //左侧菜单子菜单背景,
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
                     leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
@@ -256,6 +256,26 @@ layui.define(["jquery", "layer"], function (exports) {
                     leftMenuColor: 'rgb(191, 187, 187)', //左侧菜单字体颜色,
                     leftMenuColorThis: '#ffffff', //左侧菜单选中字体颜色,
                     tabActiveColor: '#963885', //tab选项卡选中颜色,
+                },
+                {
+                    headerRightBg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // 渐变头部背景
+                    headerRightBgThis: 'rgba(255,255,255,0.2)', // 头部选中背景
+                    headerRightColor: 'rgba(255,255,255,0.9)', // 头部字体颜色
+                    headerRightChildColor: 'rgba(255,255,255,0.8)', // 头部下拉字体颜色
+                    headerRightColorThis: '#ffffff', // 头部鼠标选中
+                    headerRightNavMore: 'rgba(255,255,255,0.7)', // 头部更多下拉颜色
+                    headerRightNavMoreBg: '#667eea', // 头部更多下拉列表选中背景色
+                    headerRightNavMoreColor: '#ffffff', // 头部更多下拉列表字体色
+                    headerRightToolColor: '#ffffff', // 头部缩放按钮样式
+                    headerLogoBg: 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)', // logo渐变背景
+                    headerLogoColor: '#ffffff', // logo字体颜色
+                    leftMenuNavMore: 'rgba(255,255,255,0.6)', // 左侧菜单更多下拉样式
+                    leftMenuBg: 'linear-gradient(180deg, #2c3e50 0%, #34495e 100%)', // 左侧菜单渐变背景
+                    leftMenuBgThis: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // 左侧菜单选中渐变背景
+                    leftMenuChildBg: 'rgba(0,0,0,0.2)', // 左侧菜单子菜单背景
+                    leftMenuColor: 'rgba(255,255,255,0.85)', // 左侧菜单字体颜色
+                    leftMenuColorThis: '#ffffff', // 左侧菜单选中字体颜色
+                    tabActiveColor: '#667eea', // tab选项卡选中颜色
                 }
             ];
             if (bgcolorId === undefined) {

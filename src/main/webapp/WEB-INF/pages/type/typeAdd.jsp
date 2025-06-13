@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>类型添加</title>
+    <title>书籍类型添加</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,7 +23,7 @@
         <label class="layui-form-label required">类型名称</label>
         <div class="layui-input-block">
             <input type="text" name="name" lay-verify="required" lay-reqtext="类型名称不能为空" placeholder="请输入类型名称" value="" class="layui-input">
-            <tip>填写自己类型名称</tip>
+            <tip>填写类型名称</tip>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
@@ -35,7 +35,7 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">保存</button>
         </div>
     </div>
 </div>

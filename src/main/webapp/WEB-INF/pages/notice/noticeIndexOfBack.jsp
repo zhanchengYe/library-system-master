@@ -13,6 +13,119 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" media="all">
     <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <style>
+        .modern-toolbar {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .modern-btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        /* 美化现有的demoTable类 */
+        .demoTable {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #1E9FFF;
+        }
+
+        /* 美化layui-form-item */
+        .demoTable .layui-form-item {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* 美化layui-inline */
+        .demoTable .layui-inline {
+            margin-right: 15px;
+        }
+
+        /* 美化输入框 */
+        .demoTable .layui-input {
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .demoTable .layui-input:focus {
+            border-color: #1E9FFF;
+            box-shadow: 0 0 0 3px rgba(30, 159, 255, 0.1);
+        }
+
+        /* 美化搜索按钮 */
+        .demoTable .layui-btn {
+            border-radius: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex; /* 修改为 flex 布局 */
+            align-items: center; /* 垂直居中 */
+            justify-content: center; /* 水平居中 */
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .demoTable .layui-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            filter: brightness(1.05);
+        }
+
+        .demoTable .layui-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+            filter: brightness(0.95);
+        }
+
+        .demoTable .layui-btn:focus {
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.4);
+        }
+
+        .demoTable .layui-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
@@ -27,9 +140,16 @@
         </div>
 
         <script type="text/html" id="toolbarDemo">
-            <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 发布公告 </button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
+            <div class="modern-toolbar">
+                <h3 style="margin-bottom: 15px; color: #2c3e50; font-weight: 600;">
+                    <i class="layui-icon layui-icon-util" style="color: #1E9FFF;"></i> 操作工具
+                </h3>
+                <button class="layui-btn modern-btn btn-add" lay-event="add">
+                    <i class="layui-icon layui-icon-add-1"></i> 发布公告
+                </button>
+                <button class="layui-btn modern-btn btn-delete" lay-event="delete">
+                    <i class="layui-icon layui-icon-delete"></i> 批量删除
+                </button>
             </div>
         </script>
 
@@ -54,18 +174,17 @@
             elem: '#currentTableId',
             url: '${pageContext.request.contextPath}/noticeAll',//查询类型数据
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print', {
+            defaultToolbar: ['filter', {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'
             }],
             cols: [[
                 {type: "checkbox", width: 50},
-                //{field: 'id', width: 100, title: 'ID', sort: true},
                 {field: 'topic', width: 150, title: '公告主题'},
                 {field: 'content', width: 200, title: '公告内容'},
                 {field: 'author', width: 100, title: '发布者'},
-                {templet:"<div>{{layui.util.toDateString(d.createDate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 200, title: '发布时间'},
+                // 删除这一行：{templet:"<div>{{layui.util.toDateString(d.createDate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 200, title: '发布时间'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],

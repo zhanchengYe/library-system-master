@@ -38,29 +38,7 @@ public class LoginController {
      * @param request
      * @param response
      */
-    @RequestMapping("/verifyCode")
-    public void verifyCode(HttpServletRequest request, HttpServletResponse response) {
-        IVerifyCodeGen iVerifyCodeGen = new SimpleCharVerifyCodeGenImpl();
-        try {
-            //设置长宽
-            VerifyCode verifyCode = iVerifyCodeGen.generate(80, 28);
-            String code = verifyCode.getCode();
-            //将VerifyCode绑定session
-            request.getSession().setAttribute("VerifyCode", code);
-            //设置响应头
-            response.setHeader("Pragma", "no-cache");
-            //设置响应头
-            response.setHeader("Cache-Control", "no-cache");
-            //在代理服务器端防止缓冲
-            response.setDateHeader("Expires", 0);
-            //设置响应内容类型
-            response.setContentType("image/jpeg");
-            response.getOutputStream().write(verifyCode.getImgBytes());
-            response.getOutputStream().flush();
-        } catch (IOException e) {
-            System.out.println("异常处理");
-        }
-    }
+
 
     /**
      * 登录验证
@@ -77,10 +55,7 @@ public class LoginController {
         //判断验证码是否正确（验证码已经放入session）
         HttpSession session = request.getSession();
         String realCode = (String)session.getAttribute("VerifyCode");
-        if (!realCode.toLowerCase().equals(code.toLowerCase())){
-            model.addAttribute("msg","验证码不正确");
-            return "login";
-        }else{
+
             //验证码正确则判断用户名和密码
             if(type.equals("1")){//管理员信息
                 //用户名和密码是否正确
@@ -102,7 +77,7 @@ public class LoginController {
             }
 
             return "index";
-        }
+
     }
     /**
      * 退出功能

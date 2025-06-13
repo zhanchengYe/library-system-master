@@ -18,10 +18,28 @@
         body {
             background-color: #ffffff;
         }
+        .layui-form-item .layui-input, .layui-textarea {
+            border-radius: 6px;
+            border: 2px solid #e1e8ed;
+            transition: border-color 0.3s;
+        }
+
+        /* 修改焦点状态 */
+        .layui-form-item .layui-input:focus, .layui-textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        /* 修改标签样式 */
+        .layui-form-label {
+            background: #f8f9fa;
+            border-radius: 4px 0 0 4px;
+        }
     </style>
 </head>
 <body>
 <div class="layui-form layuimini-form">
+
     <div class="layui-form-item">
         <label class="layui-form-label required">公告主题</label>
         <div class="layui-input-block">
@@ -43,6 +61,8 @@
 </div>
 <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
+
+
     layui.use(['form'], function () {
         var form = layui.form,
             layer = layui.layer,

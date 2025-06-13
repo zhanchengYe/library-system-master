@@ -13,22 +13,104 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" media="all">
     <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <style>
+        /* 整体容器美化 */
+        .layuimini-container {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* 搜索区域卡片化 */
+        .demoTable {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #1E9FFF;
+        }
+
+        .demoTable .layui-input {
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .demoTable .layui-input:focus {
+            border-color: #1E9FFF;
+            box-shadow: 0 0 0 3px rgba(30, 159, 255, 0.1);
+        }
+
+        .demoTable .layui-btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex; /* 使用Flexbox */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .demoTable .layui-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* 表格容器美化 */
+        .layui-table-view {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .layui-table-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .layui-table-header th {
+            color: #253540;
+            font-weight: 600;
+        }
+
+        .layui-table tbody tr:hover {
+            background: #f8f9ff;
+            transition: all 0.3s ease;
+        }
+
+        .layuimini-main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
 
         <div class="demoTable">
-            公告主题：
-            <div class="layui-inline">
-                <input class="layui-input" name="topic" id="topic" autocomplete="off">
+            <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+            <h3 style="margin-bottom: 20px; color: #2c3e50; font-weight: 600;">
+                <i class="layui-icon layui-icon-search" style="color: #1E9FFF;"></i> 搜索条件
+            </h3>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                公告主题：
+                <div class="layui-inline">
+                    <input class="layui-input" name="topic" id="topic" placeholder="请输入公告主题" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">
+                    <i class="layui-icon layui-icon-search"></i> 搜索
+                </button>
             </div>
-            <button class="layui-btn" data-type="reload">搜索</button>
         </div>
 
         <!--表单，查询出的数据在这里显示-->
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
-
+        </div>
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="query">查询详情</a>
         </script>
@@ -46,7 +128,7 @@
             elem: '#currentTableId',
             url: '${pageContext.request.contextPath}/noticeAll',//查询类型数据
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print', {
+            defaultToolbar: ['filter', {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'

@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>图书管理系统</title>
+    <title>图书借阅管理系统</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -48,13 +48,20 @@
             <!--手机端头部菜单-->
             <ul class="layui-nav layui-layout-left layuimini-header-menu layuimini-mobile-show">
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                    <a href="javascript:;"><i class="fa fa-list-ul"></i> 模块选择</a>
                     <dl class="layui-nav-child layuimini-menu-header-mobile">
                     </dl>
                 </li>
             </ul>
 
             <ul class="layui-nav layui-layout-right ">
+
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" id="notificationBtn">
+                        <i class="fa fa-bell"></i>
+                        <span class="notification-badge" style="display:none;">0</span>
+                    </a>
+                </li>
 
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
@@ -130,6 +137,36 @@
 </div>
 <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+<script>
+    // 通知系统JavaScript
+    $(document).ready(function() {
+        // 定时检查通知
+        setInterval(checkNotifications, 30000); // 每30秒检查一次
+
+        function checkNotifications() {
+            $.get('${pageContext.request.contextPath}/getNotifications', function(data) {
+                if(data.unreadCount > 0) {
+                    $('.notification-badge').text(data.unreadCount).show();
+                } else {
+                    $('.notification-badge').hide();
+                }
+            });
+        }
+
+        // 点击通知按钮
+        $('#notificationBtn').click(function() {
+            layer.open({
+                type: 2,
+                title: '系统通知',
+                area: ['400px', '500px'],
+                content: '${pageContext.request.contextPath}/notificationList'
+            });
+        });
+
+        // 初始化检查
+        checkNotifications();
+    });
+</script>
 <script>
     layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
         var $ = layui.jquery,

@@ -19,17 +19,150 @@
 
     <style>
         html, body {width: 100%;height: 100%;overflow: hidden}
-        body {background: url("${pageContext.request.contextPath}/images/loginbg.png") no-repeat center; background-size: cover; }
-        body:after {content:'';background-repeat:no-repeat;background-size:cover;-webkit-filter:blur(3px);-moz-filter:blur(3px);-o-filter:blur(3px);-ms-filter:blur(3px);filter:blur(3px);position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;}
-        .layui-container {width: 100%;height: 100%;overflow: hidden}
-        .admin-login-background {width:450px;height:300px;position:absolute;left:50%;top:50%;transform: translate(-50%, -50%);margin: 0;opacity:0.9;}
-        .logo-title {text-align:center;letter-spacing:2px;padding:14px 0;}
-        .logo-title h1 {color:#1E9FFF;font-size:25px;font-weight:bold;}
-        .login-form {background-color:#fff;border:1px solid #fff;border-radius:3px;padding:14px 20px;box-shadow:0 0 8px #eeeeee;}
-        .login-form .layui-form-item {position:relative;}
-        .login-form .layui-form-item label {position:absolute;left:1px;top:1px;width:38px;line-height:36px;text-align:center;color:#d2d2d2;}
-        .login-form .layui-form-item input {padding-left:36px;}
-        .captcha-img img {height:34px;border:1px solid #e6e6e6;height:36px;width:100%;}
+        body {
+            background: url("${pageContext.request.contextPath}/images/img.png") no-repeat center; background-size: cover;
+        }
+
+        .layui-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-login-background {
+            width: 420px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-login-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffffff, #ffffff);
+        }
+
+        .logo-title h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-form {
+            background: transparent;
+            border: none;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .layui-form-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .layui-input, .layui-input select {
+            height: 50px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding-left: 50px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .layui-input:focus {
+            border-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .login-form .layui-form-item label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 18px;
+            z-index: 10;
+        }
+
+        .layui-btn-fluid {
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .layui-btn-fluid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .captcha-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .captcha-input {
+            flex: 1;
+        }
+
+        .captcha-img {
+            width: 120px;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e1e8ed;
+        }
+
+        .captcha-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .admin-login-background {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .layui-form-item {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .layui-form-item:nth-child(1) { animation-delay: 0.1s; }
+        .layui-form-item:nth-child(2) { animation-delay: 0.2s; }
+        .layui-form-item:nth-child(3) { animation-delay: 0.3s; }
+        .layui-form-item:nth-child(4) { animation-delay: 0.4s; }
+        .layui-form-item:nth-child(5) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -53,18 +186,16 @@
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username"></label>
                     <select name="type" lay-verify="required">
-                        <option value="">请选择用户类型</option>
+
                         <option value="1">管理员</option>
                         <option value="2">读者</option>
                     </select>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-inline">
-                        <input type="text" name="captcha" style="width: 200px;" lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
-                    </div>
+
                     <div class="layui-input-inline">
                         <div class="field">
-                            <a href="javascript:void(0)" onclick="getCode()"><img id="code" ></a>
+                            <a href="javascript:void(0)"  id="code" ></a>
                         </div>
                     </div>
                 </div>
@@ -112,10 +243,7 @@
                 layer.msg('密码不能为空');
                 return false;
             }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空');
-                return false;
-            }
+
             if (data.type == '') {
                 layer.msg('类型不能为空');
                 return false;

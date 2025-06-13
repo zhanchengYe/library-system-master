@@ -6,13 +6,47 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>类型管理</title>
+    <title>书籍类型管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" media="all">
     <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+    <style>
+
+        .modern-toolbar {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .modern-btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
@@ -27,9 +61,16 @@
         </div>
 
         <script type="text/html" id="toolbarDemo">
-            <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 添加 </button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
+            <div class="modern-toolbar">
+                <h3 style="margin-bottom: 15px; color: #2c3e50; font-weight: 600;">
+                    <i class="layui-icon layui-icon-util" style="color: #1E9FFF;"></i> 操作工具
+                </h3>
+                <button class="layui-btn modern-btn btn-add" lay-event="add">
+                    <i class="layui-icon layui-icon-add-1"></i> 添加类型
+                </button>
+                <button class="layui-btn modern-btn btn-delete" lay-event="delete">
+                    <i class="layui-icon layui-icon-delete"></i> 批量删除
+                </button>
             </div>
         </script>
 
@@ -54,7 +95,7 @@
             elem: '#currentTableId',
             url: '${pageContext.request.contextPath}/typeAll',//查询类型数据
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print', {
+            defaultToolbar: ['filter',  {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'

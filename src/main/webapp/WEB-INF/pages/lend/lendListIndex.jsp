@@ -12,6 +12,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/public.css" media="all">
+    <style>
+        .modern-toolbar {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .modern-btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: white;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <div class="layuimini-container">
@@ -51,10 +89,19 @@
             </div>
         </div>
         <script type="text/html" id="toolbarDemo">
-            <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"> 借书 </button>
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="back"> 还书 </button>
-                <button class="layui-btn layui-btn-sm layui-btn-danger data-delete-btn" lay-event="delete"> 删除 </button>
+            <div class="modern-toolbar">
+                <h3 style="margin-bottom: 15px; color: #2c3e50; font-weight: 600;">
+                    <i class="layui-icon layui-icon-util" style="color: #1E9FFF;"></i> 操作工具
+                </h3>
+                <button class="layui-btn modern-btn btn-add" lay-event="add">
+                    <i class="layui-icon layui-icon-add-1"></i> 新增借阅
+                </button>
+                <button class="layui-btn modern-btn btn-back" lay-event="back">
+                    <i class="layui-icon layui-icon-return"></i> 批量归还
+                </button>
+                <button class="layui-btn modern-btn btn-delete" lay-event="delete">
+                    <i class="layui-icon layui-icon-delete"></i> 批量删除
+                </button>
             </div>
         </script>
 
@@ -82,7 +129,7 @@
             elem: '#currentTableId',
             url: '${pageContext.request.contextPath}/lendListAll',//查询借阅图书记录
             toolbar: '#toolbarDemo',
-            defaultToolbar: ['filter', 'exports', 'print', {
+            defaultToolbar: ['filter', {
                 title: '提示',
                 layEvent: 'LAYTABLE_TIPS',
                 icon: 'layui-icon-tips'
@@ -99,18 +146,12 @@
                 {templet:"<div>{{layui.util.toDateString(d.lendDate,'yyyy-MM-dd HH:mm:ss')}}</div>", width: 160, title: '借阅时间'},
                 {field: 'backDate', width: 160, title: '还书时间'},
                 {title:"还书类型",minWidth: 120,templet:function(res){
-                      if(res.backType=='0'){
-                          return '<span class="layui-badge layui-bg-green">正常还书</span>'
-                      }else if(res.backType=='1'){
-                          return '<span class="layui-badge layui-bg-gray">延迟还书</span>'
-
-                      }else if(res.backType=='2') {
-                          return '<span class="layui-badge layui-bg-yellow">破损还书</span>'
-                      }else if(res.backType=='3'){
-                          return '<span class="layui-badge layui-bg-green">丢失图书</span>'
-                      }else{
-                          return '<span class="layui-badge layui-bg-red">在借中</span>'
-                      }
+                        if(res.backType=='0'){
+                            return '<span class="layui-badge" style="background-color: #28a745;">正常还书</span>'
+                        }else if(res.backType=='1'){
+                            return '<span class="layui-badge" style="background-color: #ffc107;">延迟还书</span>'
+                        }
+                        // ... 其他状态
                     }},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
